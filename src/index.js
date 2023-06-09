@@ -3,9 +3,10 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/root";
-import SignUp from "./routes/signUp";
-import SignIn from "./routes/signIn";
 import Todo from "./routes/todo";
+import Auth from "./routes/auth";
+import { Global } from "@emotion/react";
+import GlobalStyles from "./styles/globalStyles";
 
 const router = createBrowserRouter([
   {
@@ -14,11 +15,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <SignUp />,
+    element: <Auth />,
   },
   {
     path: "/signin",
-    element: <SignIn />,
+    element: <Auth isSignIn={true} />,
   },
   {
     path: "/todo",
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Global styles={GlobalStyles} />
     <RouterProvider router={router} />
   </React.StrictMode>
 );
