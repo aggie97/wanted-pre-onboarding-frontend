@@ -1,9 +1,9 @@
-import Input from "../../common/input";
+import Input from '../../common/input';
 
 const AuthPresenter = (props) => {
   return (
     <div>
-      <h1>{props.isSignIn ? "로그인" : "회원가입"}</h1>
+      <h1>{props.isSignIn ? '로그인' : '회원가입'}</h1>
       <form>
         <Input
           testId="email-input"
@@ -16,11 +16,11 @@ const AuthPresenter = (props) => {
           onChange={props.onChangeFormData}
         />
         <button
-          data-testid="signup-button"
+          data-testid={props.isSignIn ? 'signin-button' : 'signup-button'}
           onClick={props.onSubmit}
           disabled={!props.isValid}
         >
-          {props.isSignIn ? "로그인" : "회원가입"}
+          {props.isSignIn ? '로그인' : '회원가입'}
         </button>
       </form>
     </div>
