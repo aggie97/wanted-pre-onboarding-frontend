@@ -74,6 +74,7 @@ const TodoItem = (props) => {
   };
   const onClickCancel = () => {
     setIsEditMode(false);
+    setTodoValue(props.data.todo);
   };
 
   return (
