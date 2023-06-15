@@ -1,19 +1,19 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export const useAuth = () => {
+const useAuth = () => {
   const naviagtor = useNavigate();
-  const token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem('accessToken');
 
   useEffect(() => {
     if (token) {
-      naviagtor("/todo", { replace: true });
-      return;
+      naviagtor('/todo', { replace: true });
     } else {
-      if (window.location.pathname === "/todo") {
-        naviagtor("/signin", { replace: true });
-        return;
+      if (window.location.pathname === '/todo') {
+        naviagtor('/signin', { replace: true });
       }
     }
-  }, [naviagtor, token]);
+  }, []);
 };
+
+export default useAuth;

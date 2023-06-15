@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../../utils/hook/useAuth';
+import useAuth from '../../../utils/hook/useAuth';
 import TodoPresenter from './Todo.presenter';
 import axios from 'axios';
 import useGetTodo from '../../../utils/hook/useGetTodo';
 
 const TodoContainer = () => {
   useAuth();
+
   const { todos, refetch } = useGetTodo();
   const [inputValue, setInputValue] = useState('');
   const onAddTodo = async (event) => {

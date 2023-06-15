@@ -2,15 +2,12 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import Button from '../../../../common/button';
 import Input from '../../../../common/input';
-// {
-//   "id": 1,
-//   "todo": "todo2",
-//   "isCompleted": false,
-//   "userId": 1
-// },
+import styled from '@emotion/styled';
 
 const TodoItem = (props) => {
   const [isEditMode, setIsEditMode] = useState(false);
+  const [todoValue, setTodoValue] = useState(props.data.todo);
+
   const onClickCheck = async () => {
     try {
       await axios({
@@ -53,8 +50,8 @@ const TodoItem = (props) => {
     }
   };
 
-  const onClickSubmit = async (event) => {
-    const todo = event.target.parentElement.children[0].value;
+  const onClickSubmit = async () => {
+    const todo = todoValue;
     try {
       await axios({
         url: `/todos/${props.data.id}`,
@@ -78,17 +75,22 @@ const TodoItem = (props) => {
   const onClickCancel = () => {
     setIsEditMode(false);
   };
+
   return (
-    <li>
+    <TodoItemLi>
       {isEditMode ? (
         <Input
           type="text"
+          label="todo"
           testId="modify-input"
-          defaultValue={props.data.todo}
+          value={todoValue}
+          onChange={(e) => setTodoValue(e.target.value)}
+          fontSize="2rem"
         />
       ) : (
         <label>
           <input
+            id="check"
             type="checkbox"
             checked={props.data.isCompleted}
             onChange={onClickCheck}
@@ -100,16 +102,46 @@ const TodoItem = (props) => {
         type="button"
         onClick={isEditMode ? onClickSubmit : onClickEdit}
         testId={isEditMode ? 'submit-button' : 'modify-button'}
-        text={isEditMode ? '제출' : '수정'}
+        text={isEditMode ? 'O' : '수정'}
       />
       <Button
         type="button"
         onClick={isEditMode ? onClickCancel : onClickDelete}
         testId={isEditMode ? 'cancel-button' : 'delete-button'}
-        text={isEditMode ? '취소' : '삭제'}
+        text={isEditMode ? 'X' : '삭제'}
       />
-    </li>
+    </TodoItemLi>
   );
 };
 
 export default TodoItem;
+
+const TodoItemLi = styled.li`
+  display: flex;
+
+  > :not(button) {
+    flex: 8;
+  }
+
+  > button {
+    flex: 1;
+  }
+
+  label {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    background-color: #ddd;
+
+    input {
+      width: 50px;
+    }
+  }
+
+  > button:nth-of-type(1) {
+    background-color: #1c1;
+  }
+  > button:nth-of-type(2) {
+    background-color: #c11;
+  }
+`;

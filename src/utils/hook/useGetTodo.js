@@ -17,7 +17,9 @@ export default function useGetTodo() {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
       },
-    }).then((res) => setTodos(res.data));
+    })
+      .then((res) => setTodos(res.data))
+      .catch(() => {});
   }
 
   async function refetch() {

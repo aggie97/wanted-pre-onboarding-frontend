@@ -1,4 +1,4 @@
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 
 const GlobalStyles = css`
   html,
@@ -126,7 +126,7 @@ const GlobalStyles = css`
   blockquote:after,
   q:before,
   q:after {
-    content: "";
+    content: '';
     content: none;
   }
   table {
@@ -142,6 +142,7 @@ const GlobalStyles = css`
     max-width: 1200px;
     margin: 0 auto;
     height: 100vh;
+    background-color: rebeccapurple;
   }
 `;
 
