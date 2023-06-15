@@ -1,11 +1,9 @@
 import styled from '@emotion/styled';
+import { StyledCard } from '../../common/card';
 
-export const AuthWrapper = styled.div`
+export const AuthWrapper = styled(StyledCard)`
   width: 60%;
-  margin: 5rem auto;
-  padding: 2rem 1rem;
-  box-shadow: 0 5px 15px 10px rgb(0 0 0 /0.3);
-  border-radius: 1rem;
+
   text-align: center;
   background-color: #fff;
 
@@ -25,5 +23,9 @@ export const AuthWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+
+    p {
+      color: red;
+    }
   }
 `;

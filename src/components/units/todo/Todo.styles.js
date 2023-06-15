@@ -1,10 +1,7 @@
 import styled from '@emotion/styled';
+import { StyledCard } from '../../common/card';
 
-export const TodoWrapper = styled.div`
-  background-color: white;
-  padding: 2rem 1.5rem;
-  margin: 5rem auto;
-
+export const TodoWrapper = styled(StyledCard)`
   display: flex;
   flex-direction: column;
 

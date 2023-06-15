@@ -11,7 +11,8 @@ const AuthContainer = ({ isSignIn }) => {
   const naviagtor = useNavigate();
 
   const [formData, setFormData] = useState({ email: '', password: '' });
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState({ email: false, password: false });
+
   const onSubmit = async (event) => {
     event.preventDefault();
     const data = formData;
@@ -32,14 +33,15 @@ const AuthContainer = ({ isSignIn }) => {
     } catch (error) {
       const errorMessage = error.response.data.message;
       alert(errorMessage);
-      if (errorMessage === '동일한 이메일이 이미 존재합니다.')
-        naviagtor('/signin');
     }
   };
 
   const onChangeFormData = (event) => {
     const [email, password] = event.target.parentElement.parentElement;
-    setIsValid(email.value.includes('@') && password.value.length > 7);
+    setIsValid({
+      email: email.value.includes('@'),
+      password: password.value.length > 7,
+    });
     setFormData({ ...formData, [event.target.type]: event.target.value });
   };
   return (
