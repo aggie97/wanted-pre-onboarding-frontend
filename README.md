@@ -1,6 +1,6 @@
 # 원티드 프리온보딩 프론트엔드 인턴십 2023.06 - 선발 과제
 
-배포 링크 : [wanted-pre-onboarding-frontend-aggie97.vercel.app](wanted-pre-onboarding-frontend-aggie97.vercel.app)
+배포 링크 : [wanted-pre-onboarding-frontend-aggie97.vercel.app](https://wanted-pre-onboarding-frontend-aggie97.vercel.app)
 
 지원자 성명 : 김민겸
 
